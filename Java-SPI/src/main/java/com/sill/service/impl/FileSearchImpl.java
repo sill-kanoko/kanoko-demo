@@ -1,1 +1,0 @@
-package com.sill.service.impl;import com.sill.service.Search;/** * @author LiuShang * @date 2023-06-28 03:56 */public class FileSearchImpl implements Search {    @Override    public void startSearch(String msg) {        System.out.println("FileSearchImpl: " + msg);    }}

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kano</groupId>
+    <artifactId>kanoko-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>algorithm</module>
+        <module>design-mode</module>
+        <module>java-spi</module>
+        <module>web-crawler</module>
+        <module>log</module>
+    </modules>
+
+    <properties>
+        <java.version>11</java.version>
+
+        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
+
+        <lombok.version>1.18.2</lombok.version>
+        <hutool.version>5.7.22</hutool.version>
+
+        <pagehelper.version>1.4.1</pagehelper.version>
+
+        <mysql.version>8.0.21</mysql.version>
+        <mybatis.version>2.1.1</mybatis.version>
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+        <log4jdbc-log4j2.version>1.16</log4jdbc-log4j2.version>
+
+        <jsoup.version>1.16.1</jsoup.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot Dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Cloud Dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Cloud Alibaba Dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!-- HuTool -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- PageHelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
+            <!-- MySql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- Mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- Mybatis-Plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- Log4jdbc-Log4j2 -->
+            <dependency>
+                <groupId>org.bgee.log4jdbc-log4j2</groupId>
+                <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+                <version>${log4jdbc-log4j2.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+
+            <!-- jsoup -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- 让打包后的 jar 可以通过 "java -jar xx.jar" 命令独立运行 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.7.RELEASE</version> <!-- 需要设立版本,部分版本因未知原因无法打入依赖包 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- 把依赖的包都打包到生成的 Jar 包中 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>

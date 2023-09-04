@@ -1,0 +1,1 @@
+package com.kano.service.impl;import com.kano.service.Search;/** * @author LiuShang * @date 2023-06-28 03:56 */public class DBSearchImpl implements Search {    @Override    public void startSearch(String msg) {        System.out.println("DBSearchImpl: " + msg);    }}

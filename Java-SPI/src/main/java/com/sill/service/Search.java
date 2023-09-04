@@ -1,1 +1,0 @@
-package com.sill.service;/** * @author LiuShang * @date 2023-06-28 03:33 */public interface Search {    void startSearch(String msg);}
