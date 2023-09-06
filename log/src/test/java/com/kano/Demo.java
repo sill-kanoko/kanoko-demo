@@ -1,0 +1,1 @@
+package com.kano;import lombok.extern.slf4j.Slf4j;import org.junit.Test;/** * @author LiuShang * @date 2023-09-06 02:15 */@Slf4jpublic class Demo {    @Test    public void demo01() {        log.info("This is log.");    }}

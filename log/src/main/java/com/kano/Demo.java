@@ -1,0 +1,1 @@
+package com.kano;import lombok.extern.slf4j.Slf4j;/** * @author LiuShang * @date 2023-09-06 02:06 */@Slf4jpublic class Demo {}
